@@ -242,7 +242,22 @@ window.CompanyDetailView = (() => {
           </div>
           <div class="input-group">
             <label class="input-label" for="edit-comp-loc">Location</label>
-            <input class="input" id="edit-comp-loc" type="text" value="${Utils.escapeHtml(compObj.location)}" />
+            <select class="input" id="edit-comp-loc">
+              ${[
+                '',
+                'Mumbai, Maharashtra',
+                'Pune, Maharashtra',
+                'Bhubaneswar, Odisha',
+                'Hyderabad, Telangana',
+                'Bangalore, Karnataka',
+                'Chandigarh',
+                'Jaipur, Rajasthan',
+                'Delhi',
+                'Gurgaon, Haryana',
+                'Kolkata, West Bengal',
+                'Chennai, Tamil Nadu'
+              ].map(loc => `<option value="${loc}" ${compObj.location === loc ? 'selected' : ''}>${loc || 'Select location...'}</option>`).join('')}
+            </select>
           </div>
           <div class="input-group">
             <label class="input-label" for="edit-comp-status">Overall Status</label>

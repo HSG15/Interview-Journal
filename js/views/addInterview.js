@@ -155,8 +155,22 @@ window.AddInterviewView = (() => {
               </div>
               <div class="input-group" id="f-location-group" style="margin-bottom:0">
                 <label class="input-label" for="f-location">Company Location</label>
-                <input class="input" id="f-location" type="text" placeholder="Optional (office, city…)"
-                  value="${Utils.escapeHtml(i.location || '')}" />
+                <select class="input" id="f-location">
+                  ${[
+                    '',
+                    'Mumbai, Maharashtra',
+                    'Pune, Maharashtra',
+                    'Bhubaneswar, Odisha',
+                    'Hyderabad, Telangana',
+                    'Bangalore, Karnataka',
+                    'Chandigarh',
+                    'Jaipur, Rajasthan',
+                    'Delhi',
+                    'Gurgaon, Haryana',
+                    'Kolkata, West Bengal',
+                    'Chennai, Tamil Nadu'
+                  ].map(loc => `<option value="${loc}" ${i.location === loc ? 'selected' : ''}>${loc || 'Select location...'}</option>`).join('')}
+                </select>
               </div>
             </div>
           </div>
