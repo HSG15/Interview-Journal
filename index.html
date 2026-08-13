@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#007AFF" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <title>Interview Journal — Never forget an interview again.</title>
+  <meta name="description" content="Interview Journal is your personal interview diary. Log every question, track every round, and review your journey beautifully." />
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="css/variables.css?v=22" />
+  <link rel="stylesheet" href="css/base.css?v=22" />
+  <link rel="stylesheet" href="css/animations.css?v=22" />
+  <link rel="stylesheet" href="css/components.css?v=22" />
+  <link rel="stylesheet" href="css/views.css?v=22" />
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📓</text></svg>" />
+
+  <style>
+    /* Critical inline overrides */
+    #bottom-nav { border-top: 1px solid var(--c-separator); }
+
+    /* Slider accent track color */
+    input[type=range]#f-difficulty {
+      accent-color: var(--c-accent);
+    }
+    input[type=range]#f-confidence {
+      accent-color: var(--c-green);
+    }
+
+
+
+    /* Smooth slider track fill */
+    .slider {
+      background: linear-gradient(
+        to right,
+        var(--c-accent) 0%,
+        var(--c-accent) 50%,
+        var(--c-fill) 50%,
+        var(--c-fill) 100%
+      );
+    }
+
+    /* Press feedback on calendar day */
+    .calendar-day:active:not(.other-month) {
+      background: var(--c-fill-2);
+    }
+
+    /* Progress bar transition */
+    .progress-fill {
+      transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Mark (search highlight) */
+    mark {
+      background: rgba(255, 204, 0, 0.3);
+      color: inherit;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+
+
+
+    /* Scrollbar hidden globally */
+    * {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    *::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Main view container -->
+    <div id="view-container"></div>
+
+    <!-- Bottom navigation -->
+    <nav id="bottom-nav" role="navigation" aria-label="Main navigation"></nav>
+
+    <!-- Global search overlay -->
+    <div id="search-overlay" class="hidden" role="search" aria-label="Search"></div>
+
+    <!-- Bottom sheet (calendar day, etc.) -->
+    <div id="bottom-sheet" class="hidden" role="dialog" aria-label="Details"></div>
+
+    <!-- Toast notifications -->
+    <div id="toast-container" role="status" aria-live="polite"></div>
+  </div>
+
+  <!-- ── Data Store ── -->
+  <script type="module" src="/js/views/auth.js"></script>
+  <script type="module" src="/js/migration.js"></script>
+  
+  <!-- ── JS: Utilities & Store ── -->
+  <script type="module" src="/js/icons.js"></script>
+  <script type="module" src="/js/utils.js"></script>
+  <script type="module" src="/js/db.js"></script>
+  <script type="module" src="/js/store.js"></script>
+
+  <!-- ── JS: Components ── -->
+  <script type="module" src="/js/components/ui.js"></script>
+  <script type="module" src="/js/components/navbar.js"></script>
+  <script type="module" src="/js/components/search.js"></script>
+
+  <!-- ── JS: Views ── -->
+  <script type="module" src="/js/views/home.js"></script>
+  <script type="module" src="/js/views/calendarView.js"></script>
+  <script type="module" src="/js/views/addInterview.js"></script>
+  <script type="module" src="/js/views/detail.js"></script>
+  <script type="module" src="/js/views/companies.js"></script>
+  <script type="module" src="/js/views/companyDetail.js"></script>
+  <script type="module" src="/js/views/companyQuestions.js"></script>
+  <script type="module" src="/js/views/questions.js"></script>
+  <script type="module" src="/js/views/settings.js"></script>
+
+  <!-- ── JS: Router & App ── -->
+  <script type="module" src="/js/router.js"></script>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
