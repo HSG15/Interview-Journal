@@ -326,7 +326,18 @@ window.Store = (() => {
       
       for (const name of uniqueCompanyNames) {
         const id = Utils.uuid();
-        companies.push({ id, name, location: '', status: 'In Progress', notes: '', created_at: new Date().toISOString(), updated_at: new Date().toISOString() });
+        
+        // Find all interviews for this company to determine the latest status
+        const compInterviews = v1Interviews.filter(i => i.company === name);
+        compInterviews.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+        
+        let latestOutcome = 'In Progress';
+        if (compInterviews.length > 0 && compInterviews[0].outcome) {
+          latestOutcome = compInterviews[0].outcome;
+          if (latestOutcome === 'Pending') latestOutcome = 'In Progress';
+        }
+
+        companies.push({ id, name, location: '', status: latestOutcome, notes: '', created_at: new Date().toISOString(), updated_at: new Date().toISOString() });
         companyIdMap[name] = id;
       }
       
