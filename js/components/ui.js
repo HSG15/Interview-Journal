@@ -9,7 +9,7 @@ window.Toast = (() => {
 
     if (type !== 'error') {
       try {
-        const audio = new Audio('tune.mp3');
+        const audio = new Audio('/tune.mp3');
         audio.play().catch(e => console.log('Audio playback prevented:', e));
       } catch (e) {}
     }
