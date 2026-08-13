@@ -10,8 +10,8 @@
   border-radius: var(--r-lg);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: transform var(--dur-fast) var(--ease-out),
-              box-shadow var(--dur-fast) var(--ease-out);
+  transition: transform 250ms var(--ease-out),
+              box-shadow 250ms var(--ease-out);
 }
 
 .card-interactive {
@@ -892,6 +892,12 @@ select.input {
   border-radius: var(--r-lg);
   padding: var(--sp-4);
   box-shadow: var(--shadow-sm);
+  transition: transform 250ms var(--ease-out), box-shadow 250ms var(--ease-out);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .stat-card-icon {
